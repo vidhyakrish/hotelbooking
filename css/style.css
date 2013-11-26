@@ -1,0 +1,101 @@
+body {
+
+background: url(../images/binding_light.png);
+
+}
+
+.container
+{
+	width:80%;
+	margin:0 auto;	
+	background:#f5f5f5;
+	padding:2%;
+	
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-o-border-radius:10px 10px 10px 10px;
+	border-radius:10px;
+	min-height:600px;
+	box-shadow:2px 5px 5px #9D9A9A;
+}
+
+
+h1,h2,h3,h4,h6{
+	
+	font-family:'Oxygen';
+	
+	color:#ED6B15;
+	
+	margin:20px 20px 40px 0 ;
+}
+h5{
+	
+	color:#333;
+	margin:20px 20px 40px 0;
+	text-align:center
+}
+h1{
+	font-size:4em;
+	text-align:center;
+}
+h2{
+	
+	font-size:3em;
+}
+h3{
+	font-size:2.5em;
+}
+label{
+	font-size:1.8em;
+	 line-height:1.8em;
+	
+}
+
+.booked
+{
+	width:46%;
+	float:left;	
+	 
+	clear:both;
+	min-height:500px;
+	
+}
+
+.sty
+{
+	border:1px dotted #666;
+	border-radius:10px;
+	padding:10px;
+	
+}
+.seated
+{
+	
+	width:46%;
+	float:right;
+	min-height:400px;
+}
+
+ul li
+{
+	
+	list-style-type:none;
+	font-size:1.4em;
+	color:#fff;
+	border-radius:50%;
+	border:1px solid #550808;
+	width:60px;
+	padding:20px;
+	background:#ED6B15;
+	display:inline-block;
+	margin:5px 5px 5px 0;
+	text-align:center;
+	box-shadow:2px 5px 5px #9D9A9A;
+}
+
+ul li:hover
+{
+	background:#EBAB81;
+	transition:0.25s ease-in;
+}
+
