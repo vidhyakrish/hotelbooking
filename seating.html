@@ -1,0 +1,143 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+<title>Seating</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<!-- For all browsers -links from my site-->
+<link rel="stylesheet" media="screen" href="http://feelglasgow.co.uk/cp/css/boilerplate.css">
+<!-- For progressively larger displays -->
+<link rel="stylesheet" media="screen" href="css/style.css">
+<link rel="stylesheet" media="only screen and (min-width: 480px)" href="http://feelglasgow.co.uk/cp/css/480.css">
+<!-- 408 -->
+<link rel="stylesheet" media="only screen and (min-width: 768px)" href="http://feelglasgow.co.uk/cp/css/768.css">
+<!-- 732 -->
+<link rel="stylesheet" media="only screen and (min-width: 980px)" href="http://feelglasgow.co.uk/cp/css/992.css">
+<!-- 948 -->
+<link rel="stylesheet" media="only screen and (min-width: 1382px)" href="http://feelglasgow.co.uk/cp/css/1382.css">
+<!-- 1380 -->
+<link rel="stylesheet" media="only screen and (min-width: 1600px)" href="http://feelglasgow.co.uk/cp/css/wide.css">
+<link rel="stylesheet"  href="http://feelglasgow.co.uk/cp/css/font-awesome.css">
+<link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+    	<script src="http://feelglasgow.co.uk/cp/js/selectivizr-1.0.1.js"></script>
+        <![endif]-->
+
+<script src="http://feelglasgow.co.uk/cp/modernizr.custom.72111.js"></script>
+</head>
+
+<body class="home">
+</head>
+
+<body>
+<div class="container">
+  <h1>Seating</h1>
+  <h5>Once arrived, drag the person to the seating area on the right. (Not literally dragging -lol)</h5>
+  <script src="http://code.jquery.com/jquery-latest.js"></script> 
+  <script>
+$(function() {
+$( ".draggable" ).draggable();
+$( "#droppable" ).droppable({
+drop: function( event, ui ) {
+$( this )
+.addClass( "ui-state-highlight" )
+.find( "p" )
+.html( "Dropped!" );
+}
+});
+});
+</script>
+  <section class="booked clearfix sty">
+    <h2> No of covers booked : </h2>
+    <script> 
+				 
+					 $("h2").append(localStorage.diners);
+					 </script>
+    <h4> Booking made by : <script>$("h4").append(localStorage.firstname);</script></h4>
+    <h3>(Not arrived) </h3>
+    <ul class="ui-widget-content">
+    </ul>
+  </section>
+  <section class="seated clearfix sty">
+    <div id="droppable" class="ui-widget-header">
+      <h2>Seating</h2>
+    </div>
+  </section>
+  <script>
+				 for (var i = 1; i <= localStorage.diners; i++) {
+                var tagy ="<li class='draggable'><i class='icon-user'></i> "+ i + "</li>";
+
+    $("ul").append(tagy);
+				 
+}
+                   </script> 
+</div>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+<script src="js/script.js"></script> 
+<script>
+		$(document).ready(function () {
+			/*
+			 * check browser supports local storage
+			 */
+			if (localStorage) {
+				/*
+				 * if form field values exist in local storage use
+				 * them to populate the form when the page loads
+				 */
+				if (localStorage.type) {
+					$("#type").find("option[value=" + localStorage.type + "]").attr("selected", true);
+				}
+				if (localStorage.name) {
+					$("#name").val(localStorage.name);
+					
+				}
+				if (localStorage.diners) {
+					$("#diners").val(localStorage.diners);
+				}
+				if (localStorage.email) {
+					$("#email").val(localStorage.email);
+				}
+				if (localStorage.message) {
+					$("#message").val(localStorage.message);
+				}
+				if (localStorage.subscribe === "checked") {
+					$("#subscribe").attr("checked", "checked");
+				}
+				
+				/*
+				 * when a form field changes store it's value in local storage
+				 */
+				$("input[type=text],select,textarea").change(function(){
+					$this = $(this);
+					localStorage[$this.attr("name")] = $this.val();
+				});
+				$("input[type=checkbox]").change(function(){
+					$this = $(this);
+					localStorage[$this.attr("name")] = $this.attr("checked");
+				});
+				
+				$("form")
+					/*
+					 * clear local storage when the form is submitted
+					 */
+					.submit(function(){
+						localStorage.clear();
+					})
+					/* 
+					 * output local storage to the console each time the form changes
+					 * (you may want to remove this code on the production server)
+					 */
+					.change(function(){
+						console.log(localStorage);
+					});
+			}
+		});
+		</script>
+</body>
+</html>
