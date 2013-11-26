@@ -1,0 +1,79 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+<title>Seating</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<!-- For all browsers -links from my site-->
+<link rel="stylesheet" media="screen" href="http://feelglasgow.co.uk/cp/css/boilerplate.css">
+<!-- For progressively larger displays -->
+<link rel="stylesheet" media="screen" href="css/style.css">
+<link rel="stylesheet" media="screen" href="css/mediaqueries.css">
+<link rel="stylesheet"  href="http://feelglasgow.co.uk/cp/css/font-awesome.css">
+<link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+    	<script src="http://feelglasgow.co.uk/cp/js/selectivizr-1.0.1.js"></script>
+        <![endif]-->
+
+<script src="http://feelglasgow.co.uk/cp/modernizr.custom.72111.js"></script>
+</head>
+
+<body class="home">
+</head>
+
+<body>
+<div class="container">
+  <h1>Seating</h1>
+  <h5>Once arrived, drag the person to the seating area on the right. (Not literally dragging -lol)</h5>
+  <script src="http://code.jquery.com/jquery-latest.js"></script> 
+  <script>
+$(function() {
+$( ".draggable" ).draggable();
+$( "#droppable" ).droppable({
+drop: function( event, ui ) {
+$( this )
+.addClass( "ui-state-highlight" )
+.find( "p" )
+.html( "Dropped!" );
+}
+});
+});
+</script>
+  <section class="booked clearfix sty">
+    <h2> No of covers booked : </h2>
+    <script> 
+				 
+					 $("h2").append(localStorage.diners);
+					 </script>
+    <h4> Booking made by : <script>$("h4").append(localStorage.firstname);</script></h4>
+    <h3>(Not arrived) </h3>
+    <ul class="ui-widget-content">
+    </ul>
+  </section>
+  <section class="seated clearfix sty">
+    <div id="droppable" class="ui-widget-header">
+      <h2>Seating</h2>
+    </div>
+  </section>
+  <script>
+				 for (var i = 1; i <= localStorage.diners; i++) {
+                var tagy ="<li class='draggable'><i class='icon-user'></i> "+ i + "</li>";
+
+    $("ul").append(tagy);
+				 
+}
+                   </script> 
+</div>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+<script src="js/script.js"></script> 
+
+<script src="js/seating.js"></script> 
+ 
+</body>
+</html>
